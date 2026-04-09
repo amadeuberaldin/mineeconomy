@@ -1,85 +1,178 @@
 package com.amadeu.mineeconomy.shop;
 
-import com.amadeu.mineeconomy.shop.reward.ItemRewardFactory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.village.TradeOffer;
-import net.minecraft.village.TradedItem;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public final class EmeraldShopOffers {
-
-    private static final int MAX_SINGLE_STACK_COST = 64;
-    private static final int MAX_TOTAL_COST = 128;
 
     private EmeraldShopOffers() {
     }
 
-    public static List<TradeOffer> createOffers(ServerPlayerEntity player) {
-        List<TradeOffer> offers = new ArrayList<>();
+    public static List<ShopEntry> createOffers() {
+        return List.of(
+                // ===== ENCANTAMENTOS =====
+                new ShopEntry(
+                        "basic_preservation_book",
+                        "Livro Basico de Preservacao",
+                        35,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1),
+                                new ShopEntry.EnchantEntry("vanishing_curse", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "fishing_rod_book",
+                        "Livro da Vara",
+                        35,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("luck_of_the_sea", 3),
+                                new ShopEntry.EnchantEntry("lure", 3),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "sword_book",
+                        "Livro da Espada",
+                        120,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("sharpness", 5),
+                                new ShopEntry.EnchantEntry("looting", 3),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1),
+                                new ShopEntry.EnchantEntry("fire_aspect", 2),
+                                new ShopEntry.EnchantEntry("knockback", 2)
+                        )
+                ),
+                new ShopEntry(
+                        "bow_book",
+                        "Livro do Arco",
+                        128,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("power", 5),
+                                new ShopEntry.EnchantEntry("infinity", 1),
+                                new ShopEntry.EnchantEntry("flame", 1),
+                                new ShopEntry.EnchantEntry("punch", 2),
+                                new ShopEntry.EnchantEntry("unbreaking", 3)
+                        )
+                ),
+                new ShopEntry(
+                        "pickaxe_book",
+                        "Livro da Picareta",
+                        100,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("efficiency", 5),
+                                new ShopEntry.EnchantEntry("fortune", 3),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "shovel_book",
+                        "Livro da Pa",
+                        80,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("efficiency", 5),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1),
+                                new ShopEntry.EnchantEntry("silk_touch", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "hoe_book",
+                        "Livro da Enxada",
+                        70,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("efficiency", 5),
+                                new ShopEntry.EnchantEntry("fortune", 3),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "helmet_book",
+                        "Livro do Capacete",
+                        110,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("protection", 4),
+                                new ShopEntry.EnchantEntry("respiration", 3),
+                                new ShopEntry.EnchantEntry("aqua_affinity", 1),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "chestplate_book",
+                        "Livro do Peitoral",
+                        120,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("protection", 4),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "leggings_book",
+                        "Livro da Calca",
+                        110,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("protection", 4),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
+                new ShopEntry(
+                        "boots_book",
+                        "Livro da Bota",
+                        120,
+                        "enchanted_book",
+                        1,
+                        List.of(
+                                new ShopEntry.EnchantEntry("protection", 4),
+                                new ShopEntry.EnchantEntry("feather_falling", 4),
+                                new ShopEntry.EnchantEntry("depth_strider", 3),
+                                new ShopEntry.EnchantEntry("unbreaking", 3),
+                                new ShopEntry.EnchantEntry("mending", 1)
+                        )
+                ),
 
-        // ===== ENCANTAMENTOS =====
-        offers.add(createOffer(35, ItemRewardFactory.createBasicPreservationBook(player)));
-        offers.add(createOffer(35, ItemRewardFactory.createFishingRodBook(player)));
-        offers.add(createOffer(120, ItemRewardFactory.createSwordBook(player)));
-        offers.add(createOffer(128, ItemRewardFactory.createBowBook(player)));
-        offers.add(createOffer(100, ItemRewardFactory.createPickaxeBook(player)));
-        offers.add(createOffer(80, ItemRewardFactory.createShovelBook(player)));
-        offers.add(createOffer(70, ItemRewardFactory.createHoeBook(player)));
-        offers.add(createOffer(110, ItemRewardFactory.createHelmetBook(player)));
-        offers.add(createOffer(120, ItemRewardFactory.createChestplateBook(player)));
-        offers.add(createOffer(110, ItemRewardFactory.createLeggingsBook(player)));
-        offers.add(createOffer(120, ItemRewardFactory.createBootsBook(player)));
-
-        // ===== UTILIDADES =====
-        offers.add(createOffer(18, ItemRewardFactory.createGoldenApple()));
-        offers.add(createOffer(6, ItemRewardFactory.createGoldenCarrots()));
-        
-
-        return offers;
-    }
-
-    private static TradeOffer createOffer(int emeraldCost, ItemStack result) {
-        if (emeraldCost <= 0) {
-            throw new IllegalArgumentException("O custo da trade deve ser maior que zero.");
-        }
-
-        if (emeraldCost > MAX_TOTAL_COST) {
-            throw new IllegalArgumentException(
-                    "O custo " + emeraldCost + " excede o limite do merchant vanilla (" + MAX_TOTAL_COST + ")."
-            );
-        }
-
-        TradeOffer offer;
-
-        if (emeraldCost <= MAX_SINGLE_STACK_COST) {
-            offer = new TradeOffer(
-                    new TradedItem(Items.EMERALD, emeraldCost),
-                    Optional.empty(),
-                    result,
-                    999999,
-                    0,
-                    0.05F
-            );
-        } else {
-            int firstStack = MAX_SINGLE_STACK_COST;
-            int secondStack = emeraldCost - MAX_SINGLE_STACK_COST;
-
-            offer = new TradeOffer(
-                    new TradedItem(Items.EMERALD, firstStack),
-                    Optional.of(new TradedItem(Items.EMERALD, secondStack)),
-                    result,
-                    999999,
-                    0,
-                    0.05F
-            );
-        }
-
-        offer.setSpecialPrice(0);
-        return offer;
+                // ===== UTILIDADES =====
+                new ShopEntry(
+                        "golden_apple",
+                        "Maca Dourada",
+                        18,
+                        "golden_apple",
+                        1,
+                        List.of()
+                ),
+                new ShopEntry(
+                        "golden_carrot",
+                        "Cenoura Dourada",
+                        6,
+                        "golden_carrot",
+                        4,
+                        List.of()
+                )
+        );
     }
 }
