@@ -32,7 +32,7 @@ public final class MerchantShopCommands {
         List<ShopEntry> entries = EmeraldShopOffers.createOffers();
         VirtualMerchant merchant = new VirtualMerchant(player, entries);
 
-        merchant.openTradingScreen(player, Component.literal("Loja Global"), 0);
+        merchant.openSafeTradingScreen(player, Component.literal("Loja Global"), 0);
 
         return 1;
     }

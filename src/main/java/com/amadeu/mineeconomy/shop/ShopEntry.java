@@ -6,6 +6,7 @@ public record ShopEntry(
         String id,
         String displayName,
         int emeraldCost,
+        boolean requiresBook,
         String itemType,
         int count,
         List<EnchantEntry> enchantments
